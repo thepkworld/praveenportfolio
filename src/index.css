@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 120px;
+  }
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+  }
+}
+
+/* Hide scrollbar utility while preserving touch and scrollability */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Custom subtle ambient grid pattern for tech theme */
+.bg-tech-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+}
+
+.dark .bg-tech-grid {
+  background-image: 
+    linear-gradient(to right, rgba(30, 41, 59, 0.6) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(30, 41, 59, 0.6) 1px, transparent 1px);
+}
+
+/* Futuristic tech glow */
+.tech-glow {
+  box-shadow: 0 0 40px -10px rgba(59, 130, 246, 0.15);
+}
+
+.dark .tech-glow {
+  box-shadow: 0 0 50px -10px rgba(56, 189, 248, 0.18);
+}
+
+.tech-card-hover {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tech-card-hover:hover {
+  transform: translateY(-2px);
+}
+
+/* Glassmorphism card */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.dark .glass-panel {
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+@media print {
+  nav, header, footer, .no-print, button, .action-toolbar {
+    display: none !important;
+  }
+  body {
+    background-color: white !important;
+    color: black !important;
+    font-size: 11pt !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  .break-inside-avoid {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .print-container {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+}
+
